@@ -7,9 +7,9 @@ namespace Kaleb {
     struct Asset;
 
     struct AssetStore {
-        static inline std::map<std::string, const Asset*> assets;
         struct AssetRegistrator {
             AssetRegistrator(std::string_view identifier, const Asset* asset) {
+                static std::map<std::string, const Asset*> assets;
                 assets[std::string(identifier.substr(sizeof("Assets::")))] = asset;
             }
         };
